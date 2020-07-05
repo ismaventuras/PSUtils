@@ -1,4 +1,31 @@
-Create a class
+## Tratar strings
+```powershell
+
+```
+
+
+## Utilizar el registro de Windows
+```powershell
+#Entrar al registro
+Set-Location -Path Registry::HKEY_CURRENT_USER\
+Set-Location -Path Registry::HKEY_LOCAL_MACHINE\
+#Obtener claves que cuelgan de una clave
+Get-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion
+#Obtener entradas de una clave
+Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion
+#Obtener una entrada  concreto de una clave
+Get-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion -Name DevicePath
+#Añadir una entrada
+Set-ItemProperty -Path HKCU:\Environment -Name Path -Value $newpath
+#Añadir una clave
+New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion -Name PowerShellPath -PropertyType String -Value $PSHome
+#Renombrar una entrada
+Rename-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion -Name PowerShellPath -NewName PSHome -passthru
+#Eliminar una entrada
+Remove-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion -Name PSHome
+```
+
+## Crear una clase
 ```powershell
 class Computer {
     [string]$snow_name
@@ -23,16 +50,4 @@ class Computer {
 
 
 }
-```
-
-Navigate registry
-
-```powershell
-#Entrar al registro
-Set-Location -Path Registry::HKEY_CURRENT_USER\
-Set-Location -Path Registry::HKEY_LOCAL_MACHINE\
-#Obtener claves que cuelgan de una clave
-Get-Item .\
-#Obtener registros de una clave
-Get-ItemProperty .\
 ```
