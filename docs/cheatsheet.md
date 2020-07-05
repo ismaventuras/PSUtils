@@ -31,6 +31,8 @@ Navigate registry
 #Entrar al registro
 Set-Location -Path Registry::HKEY_CURRENT_USER\
 Set-Location -Path Registry::HKEY_LOCAL_MACHINE\
-#Obtener claves debajo de una location
+#Obtener claves que cuelgan de una clave
 Get-Item .\
+#Obtener registros de una clave
+Get-ItemProperty .\
 ```
