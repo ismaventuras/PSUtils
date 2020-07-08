@@ -1,8 +1,10 @@
 ## Tratar strings
 ```powershell
-
+#Reemplazo
+$name = 'paco'
+Write-Host ("Hola {0}" -f  $name)
 ```
-
+###
 
 ## Utilizar el registro de Windows
 ```powershell
@@ -25,29 +27,27 @@ Rename-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion -Name 
 Remove-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion -Name PSHome
 ```
 
+## Sacar todos los metodos de un objeto
+```powershell
+$var | Get-Member
+```
+
+
 ## Crear una clase
 ```powershell
 class Computer {
-    [string]$snow_name
-    [string]$snow_serial_number
-    [string]$snow_assigned_to
-    [string]$snow_hardware_status
-    [string]$snow_u_shared_device
+    [string]$name
+    [string]$serial_number
 
     #Constructor
-    Computer(
-        [string]$snow_name,
-        [string]$snow_serial_number,
-        [string]$snow_assigned_to,
-        [string]$snow_hardware_status,
-        [string]$snow_u_shared_device,
-    ) {
-        $this.snow_name = $snow_name
-        $this.snow_serial_number = $snow_serial_number
-        $this.snow_assigned_to = $snow_assigned_to
-        $this.snow_hardware_status = $snow_hardware_status
-        $this.snow_u_shared_device = $snow_u_shared_device
-
-
+    Computer([string]$name,[string]$serial_number,) {
+        $this.name = $name
+        $this.serial_number = $serial_number
+    }
 }
+```
+
+## Comprobar si una ip tiene un puerto abierto
+```powershell
+Test-NetConnection -ComputerName x.x.x.x -port y
 ```
