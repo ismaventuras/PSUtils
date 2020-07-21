@@ -1,12 +1,25 @@
+# Cheatsheet
+
+## Pasar parametros como un cmdlet
+
+```powershell
+  [CmdletBinding()]
+  PARAM (
+    [Parameter(ValueFromPipeline=$True,ValueFromPipelineByPropertyName=$True)]
+    [String[]]$ComputerName = $env:ComputerName
+  )
+```
+
 ## Tratar strings
+
 ```powershell
 #Reemplazo
 $name = 'paco'
 Write-Host ("Hola {0}" -f  $name)
 ```
-###
 
 ## Utilizar el registro de Windows
+
 ```powershell
 #Entrar al registro
 Set-Location -Path Registry::HKEY_CURRENT_USER\
