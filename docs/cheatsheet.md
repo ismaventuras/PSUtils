@@ -10,6 +10,12 @@
   )
 ```
 
+## Obtener propiedades de un comando u objeto
+
+```powershell
+$item | Get-Member
+```
+
 ## Tratar strings
 
 ```powershell
