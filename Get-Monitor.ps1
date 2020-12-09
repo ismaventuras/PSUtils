@@ -1,24 +1,31 @@
-
+function Get-Monitor{
   
   <#
+
       .SYNOPSIS
       This powershell function gets information about the monitors attached to any computer. It uses EDID information provided by WMI. If this value is not specified it pulls the monitors of the computer that the script is being run on.
+
       .DESCRIPTION
       The function begins by looping through each computer specified. For each computer it gets a litst of monitors.
       It then gets all of the necessary data from each monitor object and converts and cleans the data and places it in a custom PSObject. It then adds
       the data to an array. At the end the array is displayed.
+
       .PARAMETER ComputerName
       Use this to specify the computer(s) which you'd like to retrieve information about monitors from.
+
       .EXAMPLE
       PS C:/> Get-Monitor.ps1 -ComputerName SSL1-F1102-1G2Z
+
       Manufacturer Model    SerialNumber AttachedComputer
       ------------ -----    ------------ ----------------
       HP           HP E241i CN12345678   SSL1-F1102-1G2Z 
       HP           HP E241i CN91234567   SSL1-F1102-1G2Z 
       HP           HP E241i CN89123456   SSL1-F1102-1G2Z
+
       .EXAMPLE
       PS C:/> $Computers = @("SSL7-F108F-9D4Z","SSL1-F1102-1G2Z","SSA7-F1071-0T7F")
       PS C:/> Get-Monitor.ps1 -ComputerName $Computers
+
       Manufacturer Model      SerialNumber AttachedComputer
       ------------ -----      ------------ ----------------
       HP           HP LA2405x CN12345678   SSL7-F108F-9D4Z
@@ -26,6 +33,7 @@
       HP           HP E241i   CN89123456   SSL1-F1102-1G2Z 
       HP           HP E241i   CN78912345   SSL1-F1102-1G2Z
       HP           HP ZR22w   CN67891234   SSA7-F1071-0T7F
+
   #>
 
 
@@ -153,3 +161,4 @@
     $Monitor_Array
     
 } #End ForEach Computer
+}

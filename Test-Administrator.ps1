@@ -1,3 +1,5 @@
+function Test-Administrator  
+{  
     <#
     .SYNOPSIS
         Test if application has been run with elevated rights
@@ -14,3 +16,4 @@
     #>
     $user = [Security.Principal.WindowsIdentity]::GetCurrent();
     (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)  
+}
